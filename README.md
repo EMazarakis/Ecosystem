@@ -1,2 +1,2 @@
 # Ecosystem
-Simulation of an Ecosystem with gui
+Simulation of an Ecosystem with gui by QT Creator.
