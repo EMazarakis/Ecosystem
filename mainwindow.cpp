@@ -25,7 +25,7 @@ void MainWindow::on_pushButton_clicked()
 {
     QString fName = "example.txt";
 
-    QFile file("C:\\Qt\\Projects_QT\\Eco_Gui\\TEXT\\example.txt");
+    QFile file("C:\\Users\\user\\MyGit\\Ecosystem\\TEXT\\example.txt");
 
     if( !file.open(QIODevice::ReadOnly) ){  //if sth wrong happened
 
