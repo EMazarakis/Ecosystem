@@ -1,33 +1,11 @@
-#include "mainwindow.h"
 #include <QApplication>
-
-
-#include "ecosystem.h"
-#include "maple.h"
-#include "oak.h"
-#include "pine.h"
-
-#include "algae.h"
-#include "grass.h"
-
-#include "deer.h"
-#include "salmon.h"
-#include "rabbit.h"
-#include "groundhog.h"
-
-#include "fox.h"
-#include "bear.h"
-#include "wolf.h"
-
-#include "plants.h"
-#include "animals.h"
-
-
 #include <QCoreApplication>
 #include <QPainter>
 #include <QImage>
-#include <iostream>
 #include <assert.h>
+
+#include "mainwindow.h"
+#include "ecosystem.h"
 
 #define HOW_MANY_ALGAES 4
 #define HOW_MANY_GRASS  4
@@ -35,7 +13,6 @@
 #define HOW_MANY_OAKS 3
 #define HOW_MANY_PINES 3
 
-using namespace std;
 
 int main(int argc, char *argv[])
 {

@@ -1,9 +1,6 @@
 #include "carnivores.h"
 #define TOKEN 'C'
 
-#include <iostream>
-using namespace std;
-
 Carnivores::Carnivores(){} //TODO
 
 Carnivores::Carnivores(int SIZE, int ATTACK, int DEFENCE, int SPEED, int NEEDED_FOOD, int HIBERNATION, char TOK) : Animals(SIZE, SPEED, -1, HIBERNATION, TOK)

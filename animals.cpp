@@ -1,6 +1,4 @@
 #include "animals.h"
-#include <iostream>
-using namespace std;
 
 Animals::Animals(){} //TODO
 

@@ -1,8 +1,6 @@
 #include "herbivores.h"
 #define TOKEN 'H'
 
-#include <iostream>
-using namespace std;
 
 Herbivores::Herbivores(){} //TODO
 

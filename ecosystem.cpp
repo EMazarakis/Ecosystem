@@ -1,32 +1,12 @@
 #include "ecosystem.h"
-#include <iostream>
-#include <stdlib.h> //srand, rand, abs
+
 #include <time.h>   //time functiion
 #include <string.h>
 #include <fstream>
 
-#include "algae.h"
-#include "grass.h"
-#include "maple.h"
-#include "oak.h"
-#include "pine.h"
-
-
-#include "deer.h"
-#include "rabbit.h"
-#include "groundhog.h"
-#include "salmon.h"
-#include "wolf.h"
-#include "bear.h"
-#include "fox.h"
-#include "herbivores.h"
-#include "carnivores.h"
-
 
 #define LAKESIZE 3
 #define HILLS_NUMBER 3
-
-using namespace std;
 
 
 Ecosystem::Ecosystem(){}

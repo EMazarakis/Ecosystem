@@ -2,7 +2,19 @@
 #define ECOSYSTEM_H
 
 #include "tile.h"
+#include "algae.h"
+#include "grass.h"
+#include "maple.h"
+#include "oak.h"
+#include "pine.h"
 
+#include "deer.h"
+#include "rabbit.h"
+#include "groundhog.h"
+#include "salmon.h"
+#include "wolf.h"
+#include "bear.h"
+#include "fox.h"
 
 class Ecosystem
 {

@@ -1,5 +1,4 @@
 #include "deer.h"
-#include <stdlib.h> //abs
 
 #define DEER_SIZE 2
 #define DEER_SPEED 4

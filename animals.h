@@ -2,6 +2,7 @@
 #define ANIMALS_H
 
 #include "plants.h"
+#include <stdlib.h> //srand, rand, abs
 
 class Animals
 {
