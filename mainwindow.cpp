@@ -25,7 +25,8 @@ void MainWindow::on_pushButton_clicked()
 {
     QString fName = "example.txt";
 
-    QFile file("C:\\Users\\user\\MyGit\\Ecosystem\\TEXT\\example.txt");
+    //QFile file("C:\\Users\\user\\MyGit\\Ecosystem\\Images\\example.txt");
+    QFile file("Images\\example.txt");
 
     if( !file.open(QIODevice::ReadOnly) ){  //if sth wrong happened
 

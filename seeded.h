@@ -1,11 +1,14 @@
 #ifndef SEEDED_H
 #define SEEDED_H
 
-
 #include "plants.h"
-#include <iostream>
-using namespace std;
 
+//Seedless inherits from Plants
+//Public Inheritance:
+//public members of Plants are public members of Seedless
+//protected members of Plants are protected members of Seedless
+//Private members of Plants are not accessible from Seedless class directly,
+//only through public/protected methods
 class Seeded: public Plants
 {
 public:

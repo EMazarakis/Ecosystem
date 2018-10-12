@@ -43,18 +43,18 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(779, 597);
+        MainWindow->resize(745, 597);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         textBrowser = new QTextBrowser(centralWidget);
         textBrowser->setObjectName(QStringLiteral("textBrowser"));
-        textBrowser->setGeometry(QRect(350, 70, 401, 381));
+        textBrowser->setGeometry(QRect(390, 80, 311, 371));
         pushButton = new QPushButton(centralWidget);
         pushButton->setObjectName(QStringLiteral("pushButton"));
-        pushButton->setGeometry(QRect(530, 10, 171, 51));
+        pushButton->setGeometry(QRect(440, 10, 171, 51));
         label = new QLabel(centralWidget);
         label->setObjectName(QStringLiteral("label"));
-        label->setGeometry(QRect(490, 470, 161, 21));
+        label->setGeometry(QRect(460, 470, 161, 21));
         label_2 = new QLabel(centralWidget);
         label_2->setObjectName(QStringLiteral("label_2"));
         label_2->setGeometry(QRect(80, 470, 161, 31));
@@ -67,7 +67,7 @@ public:
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 779, 21));
+        menuBar->setGeometry(QRect(0, 0, 745, 21));
         MainWindow->setMenuBar(menuBar);
         mainToolBar = new QToolBar(MainWindow);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
@@ -84,7 +84,7 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", Q_NULLPTR));
-        pushButton->setText(QApplication::translate("MainWindow", "Open Text File", Q_NULLPTR));
+        pushButton->setText(QApplication::translate("MainWindow", "Display Ecosystem Status", Q_NULLPTR));
         label->setText(QApplication::translate("MainWindow", "                  TextLabel", Q_NULLPTR));
         label_2->setText(QApplication::translate("MainWindow", "Printf  Messages of the Program", Q_NULLPTR));
         pushButton_2->setText(QApplication::translate("MainWindow", "Run Eco", Q_NULLPTR));
