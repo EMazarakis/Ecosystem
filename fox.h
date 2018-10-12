@@ -11,4 +11,5 @@ public:
 
 };
 
+
 #endif // FOX_H

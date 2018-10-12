@@ -11,4 +11,5 @@ public:
     int Eat(Animals *animalEaten, Plants *plantEaten);
 };
 
+
 #endif // RABBIT_H

@@ -30,4 +30,5 @@ private:
     int countAnimals;   //How many animals populate at the tile
 };
 
+
 #endif // TILE_H

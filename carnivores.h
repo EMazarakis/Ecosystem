@@ -1,6 +1,7 @@
 #ifndef CARNIVORES_H
 #define CARNIVORES_H
 
+
 #include"animals.h"
 
 class Carnivores : public Animals

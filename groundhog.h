@@ -10,4 +10,5 @@ public:
     int Eat(Animals *animalEaten, Plants *plantEaten);
 };
 
+
 #endif // GROUNDHOG_H

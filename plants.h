@@ -56,4 +56,5 @@ private:
     int lifeFactor;     //
 };
 
+
 #endif // PLANTS_H
