@@ -828,7 +828,7 @@ void Ecosystem::CheckHunger(void){
         }
 }
 
-void Ecosystem::CheckDeadEntities(void){
+int Ecosystem::CheckDeadEntities(void){
 
 
     for(int i=0; i<terrainSize; i++)
@@ -838,7 +838,7 @@ void Ecosystem::CheckDeadEntities(void){
             if( (terrain[i][j].getEndemicPlant() != NULL) && (terrain[i][j].getEndemicPlant()->getLife() == 0) ){  //Plant exist at this tile & is also dead
 
                     //You must change the environment
-                    terrain[i][j].setEnvironment('D');       //D stands for Dead
+                    terrain[i][j].setEnvironment('D');          //D stands for Dead
                     delete terrain[i][j].getEndemicPlant();
             }
 
@@ -864,7 +864,15 @@ void Ecosystem::CheckDeadEntities(void){
                     int thesi = 0;              //Indexing for the new array
                     Animals **tmpAnimalsPtr;
 
-                    tmpAnimalsPtr = new Animals*[terrain[i][j].getCountAnimals()];
+                    try{
+
+                        tmpAnimalsPtr = new Animals*[terrain[i][j].getCountAnimals()];
+                    }
+                    catch(exception& e){
+
+                        cout << "Error Allocating memory: " << e.what() << endl;
+                        return EXIT_FAILURE;
+                    }
 
                     for(int q=0; q<counter; q++){
 
@@ -880,6 +888,8 @@ void Ecosystem::CheckDeadEntities(void){
                 }
             }
         }
+
+        return EXIT_SUCCESS;
 }
 
 

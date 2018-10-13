@@ -90,7 +90,7 @@ public:
     void growthPlants(void);
     void AnimaleEating_V_2(void);
     void AnimalMovement(void);
-    void CheckDeadEntities(void);
+    int CheckDeadEntities(void);
     void CheckHunger(void);
     void AnimalBreeding(int flag);
     void PlantBreeding(void);
