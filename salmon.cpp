@@ -11,20 +11,19 @@ Salmon::Salmon() : Herbivores(SALMON_SIZE, SALMON_SPEED, SALMON_NEEDED_FOOD, SAL
 //HACK:You can pass the arguments through the setters methods
 }
 
-
 int Salmon::Eat(Animals *animalEaten, Plants *plantEaten){
 
     char plantToken = plantEaten->getToken();
 
-    if( plantToken == 'A' ){     //Algae: Seedles
+    if( plantToken == 'A' ){     //Algae: Seedless
 
         setEatenFoodAnimal( getEatenFoodAnimal() + getEatCountAnimal() );
 
-        //UNDONE: Check if needeFood is complete
+        //UNDONE: Check if neededFood is completed
         plantEaten->loseLife( getEatCountAnimal() );
         cout << "Salmon ate." << endl;
-        return 1;
+        return EXIT_SUCCESS;
     }
 
-    return 0;
+    return EXIT_FAILURE;
 }

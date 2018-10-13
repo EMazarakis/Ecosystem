@@ -5,7 +5,7 @@ Carnivores::Carnivores(){} //TODO
 
 Carnivores::Carnivores(int SIZE, int ATTACK, int DEFENCE, int SPEED, int NEEDED_FOOD, int HIBERNATION, char TOK) : Animals(SIZE, SPEED, -1, HIBERNATION, TOK)
 {
-    //HACK: -1 represents an initial value for EAT_COUNT member
+    //HACK: -1 point out an initial value for EAT_COUNT member
     token = TOKEN;
     attack = ATTACK;
     defence = DEFENCE;

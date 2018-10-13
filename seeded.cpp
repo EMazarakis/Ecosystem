@@ -2,7 +2,6 @@
 
 Seeded::Seeded(): Plants(){}
 
-
 Seeded::Seeded(int FOL,int SEEDS,int SIZE,char TOKEN,int BREED,int ILL,int LIFE,int L_FACT):Plants(TOKEN,BREED,ILL,LIFE,L_FACT){
 
     foliage = FOL;

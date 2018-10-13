@@ -21,15 +21,15 @@ int Rabbit::Eat(Animals *animalEaten, Plants *plantEaten){
 
     char plantToken = plantEaten->getToken();
 
-    if( plantToken == 'G' ){    //Grass: Seedeles
+    if( plantToken == 'G' ){    //Grass: Seedless
 
         setEatenFoodAnimal( getEatenFoodAnimal() + getEatCountAnimal() );
 
-        //UNDONE: Check if needeFood is complete
+        //UNDONE: Check if neededFood is completed
 
         plantEaten->loseLife( getEatCountAnimal() );
         cout << "Rabbit ate." << endl;
-        return 1;
+        return EXIT_SUCCESS;
     }
     else if( plantToken == 'O' || plantToken == 'M' ){  //Oak & Maple: Seeded
 
@@ -51,8 +51,8 @@ int Rabbit::Eat(Animals *animalEaten, Plants *plantEaten){
             }
 
             cout << "Rabbit ate." << endl;
-            return 1;
+            return EXIT_SUCCESS;
         }
     }
-    return 0;
+    return EXIT_FAILURE;
 }

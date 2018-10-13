@@ -10,5 +10,5 @@
 
 Algae::Algae() : Seedless(TOKEN,BREED,ILL,LIFE,L_FACTOR)
 {
-//HACK:You can pass the arguments through the setters methods
+//HACK:You can pass the arguments through the setters
 }

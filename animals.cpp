@@ -11,25 +11,21 @@ Animals::Animals(int SIZE, int SPEED, int EAT_COUNT, bool HIBERNATION, char TOK)
     hibernates = HIBERNATION;
     animalToken = TOK;
 
-    //TODO: you hane to initialize and the rest of the members with some starting values
+    //TODO: You have to initialize and the rest of the members with some starting values
 }
 
 //Virtual functions
-void Animals::printMembersHerbivores(void){ cout << "vitual Herbivore Animal" << endl; }
-void Animals::printMembersCarnivores(void){ cout << "vitual Carnivore Animal" << endl; }
+void Animals::printMembersHerbivores(void){ cout << "virtual Herbivore Animal" << endl; }
+void Animals::printMembersCarnivores(void){ cout << "virtual Carnivore Animal" << endl; }
 char Animals::getToken(void){ return '$';}
 
 void Animals::setAttack(int attck){ cout << "Animals" << endl; }
 void Animals::setDefence(int defnce){ cout << "Animals" << endl; }
-int Animals::getAttack(void){ cout << "Animals" << endl; }
-int Animals::getDefence(void){ cout << "Animals" << endl; }
 
-
-int Animals::Eat(Animals *animalEaten, Plants *plantEaten){
-
-    cout << "Animals" << endl;
-    return 1;
-}
+//-3: Point out virtual function of plants class
+int Animals::getAttack(void){ cout << "Animals" << endl; return -3; }
+int Animals::getDefence(void){ cout << "Animals" << endl; return -3; }
+int Animals::Eat(Animals *animalEaten, Plants *plantEaten){ cout << "Animals" << endl; return -3; }
 
 
 //setters

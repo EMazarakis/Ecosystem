@@ -29,14 +29,14 @@ int Wolf::Eat(Animals *animalEaten, Plants *plantEaten){
     if( animalToken == this->getAnimalToken() ){    //Same kind of animals
 
         cout << "Same kind of animals. Cannibalism is forbidden." << endl;
-        return 0;
+        return EXIT_FAILURE;
     }
     else{
 
         if( animalToken == 'S' ){    //Wolf did not eat Salmon
 
             cout << "Wolf did not eat Salmon." << endl;
-            return 0;
+            return EXIT_FAILURE;
         }
         else if( animalToken == 'D' ||animalToken == 'R' || animalToken == 'G'){
             //Wolf eats all the herbivores animals except Salmon
@@ -47,7 +47,7 @@ int Wolf::Eat(Animals *animalEaten, Plants *plantEaten){
                 this->setIsHungry(false);
                 animalEaten->setIsAlive(false); //the eaten animal is dead now
                 cout << "Wolf ate." << endl;
-                return 1;   //is full
+                return EXIT_SUCCESS;   //is full
             }
             //return 0;
         }
@@ -59,10 +59,10 @@ int Wolf::Eat(Animals *animalEaten, Plants *plantEaten){
                 this->setIsHungry(false);
                 animalEaten->setIsAlive(false); //the eaten animal is dead now
                 cout << "Wolf ate." << endl;
-                return 1;   //is full
+                return EXIT_SUCCESS;   //is full
            }
         }
     }
 
-    return 0;
+    return EXIT_FAILURE;
 }

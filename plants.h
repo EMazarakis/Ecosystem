@@ -25,14 +25,14 @@ public:
     virtual  void loseLife(int eatenLife);
 
 //getters
-    char *getName();
-    int getX();
-    int getY();
-    char getToken();
-    int getBreedProb();
-    int getIllProb();
-    int getLife();
-    int getLifeFactor();
+    char *getName(void);
+    int getX(void);
+    int getY(void);
+    char getToken(void);
+    int getBreedProb(void);
+    int getIllProb(void);
+    int getLife(void);
+    int getLifeFactor(void);
 
 //setters
     void setName(char *plantName);
@@ -53,7 +53,7 @@ private:
     int breedingProb;   //Breeding probability per season
     int illnessProb;    //Ilness probability per season
     int life;           //Dead :life == 0
-    int lifeFactor;     //
+    int lifeFactor;     //Factor which changes life
 };
 
 
