@@ -19,42 +19,6 @@ Ecosystem::Ecosystem(int terrainSIZE, char *season){
 }
 
 
-int Ecosystem::createEcoTerrain(int trnSize){
-
-    try{
-
-        terrain = new Tile*[trnSize];   //arrays  of pointers
-    }
-    catch(exception& e){
-
-        cout << "Error allocating memory: " << e.what() << endl;
-        return EXIT_FAILURE;
-    }
-
-
-    for(int i=0; i<terrainSize; i++){
-
-        terrain[i] = new(std::nothrow) Tile[terrainSize];
-
-        if( terrain[i] == NULL ){
-
-            for(int j=i-1; j>-1; j--){
-
-                delete[] terrain[j];
-            }
-
-            delete [] terrain;
-
-            return EXIT_FAILURE;
-        }
-    }
-
-    return EXIT_SUCCESS;
-}
-
-
-
-
 //Destructor
 Ecosystem::~Ecosystem(){
     for(int i=0;i<terrainSize;i++){
@@ -1120,3 +1084,33 @@ void Ecosystem::PlantBreeding(void){
 
 }
 
+
+int Ecosystem::createEcoTerrain(int trnSize){
+
+    try{
+
+        terrain = new Tile*[trnSize];   //arrays  of pointers
+    }
+    catch(exception& e){
+
+        cout << "Error allocating memory: " << e.what() << endl;
+        return EXIT_FAILURE;
+    }
+
+    for(int i=0; i<terrainSize; i++){
+
+        terrain[i] = new(std::nothrow) Tile[terrainSize];
+
+        if( terrain[i] == NULL ){
+
+            for(int j=i-1; j>-1; j--){ delete[] terrain[j]; }
+
+            delete[] terrain;
+
+            cout << "Error Allocating memory during the terrain creation." << endl;
+            return EXIT_FAILURE;
+        }
+    }
+
+    return EXIT_SUCCESS;
+}
