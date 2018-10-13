@@ -2,6 +2,7 @@
 #define TILE_H
 
 #include "animals.h"
+#include<exception>
 
 //structural material of the terrain
 class Tile

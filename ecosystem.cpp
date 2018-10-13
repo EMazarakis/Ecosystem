@@ -15,15 +15,45 @@ Ecosystem::Ecosystem(int terrainSIZE, char *season){
 
     terrainSize = terrainSIZE;
     dayOfYear = season;
-
-    terrain = new Tile*[terrainSize];  //arrays  of pointers
-//TODO:ERROR EXCEPTION handling
-
-    for(int i=0;i<terrainSize;i++){
-//TODO:ERROR EXCEPTION handling
-        terrain[i] = new Tile[terrainSize];
-    }
+    terrain = NULL;
 }
+
+
+int Ecosystem::createEcoTerrain(int trnSize){
+
+    try{
+
+        terrain = new Tile*[trnSize];   //arrays  of pointers
+    }
+    catch(exception& e){
+
+        cout << "Error allocating memory: " << e.what() << endl;
+        return EXIT_FAILURE;
+    }
+
+
+    for(int i=0; i<terrainSize; i++){
+
+        terrain[i] = new(std::nothrow) Tile[terrainSize];
+
+        if( terrain[i] == NULL ){
+
+            for(int j=i-1; j>-1; j--){
+
+                delete[] terrain[j];
+            }
+
+            delete [] terrain;
+
+            return EXIT_FAILURE;
+        }
+    }
+
+    return EXIT_SUCCESS;
+}
+
+
+
 
 //Destructor
 Ecosystem::~Ecosystem(){
@@ -88,6 +118,7 @@ int Ecosystem::deletingFile(char *myFileName){
 
         if( remove(myFileName) != 0 ){    //there was sth wrong when we tried to delete the file
 
+            cout << "Sth went wrong when we tried to delete the file." << endl;
             return EXIT_FAILURE;
         }
     }
@@ -98,7 +129,7 @@ int Ecosystem::deletingFile(char *myFileName){
 
 void Ecosystem::printTerrainSnapShotToFile_txt(char *myFileName){
 
-    ofstream myfile;       // Stream class to write on files
+    ofstream myfile;       // Stream class to write in files
     myfile.open (myFileName, ios::out | ios::app);
 
     for(int i=0; i<terrainSize; i++){
@@ -111,7 +142,6 @@ void Ecosystem::printTerrainSnapShotToFile_txt(char *myFileName){
         myfile << endl;
     }
 
-    myfile << endl;
     myfile << endl;
     myfile << endl;
 
@@ -170,7 +200,7 @@ void Ecosystem::GenerateMeadow(void){
 
 //Create Ground
 void Ecosystem::MapGenerator(void){
-    //check x,y for GenerateHills
+
     int xLake, yLake, size;
     int x,y;
 
@@ -206,7 +236,7 @@ void Ecosystem::MapGenerator(void){
         }
 
 //4
-        cout << x << "----" << y << "-----" << size << endl;
+        cout << x << "----" << y << "-----" << size << endl;    //debugging
         GenerateHills(x,y,size);    //fourthly put the hills
     }
 }
@@ -228,7 +258,7 @@ void Ecosystem::PlacePlants(int algaes, int grass, int mapples, int oaks, int pi
     //planting pines
     plantingPines(pines);
 
-    //planting oakes
+    //planting oaks
     plantingOaks(oaks);
 
 }
@@ -534,8 +564,6 @@ void Ecosystem::RunEcosystem(int runDays){
 
         DailyReset();
 
-        //dayOfYear%growthPeriod: growth_Animals_Plants();
-
         //It's time for plants to growth
         if( d%growthPeriodPlant == 0 ){ growthPlants(); }
 
@@ -544,10 +572,9 @@ void Ecosystem::RunEcosystem(int runDays){
 
         for(int hours=1; hours<=24; hours++){       //Counter of the days
 
-
             AnimalMovement();
 
-            AnimaleEating();
+            AnimaleEating_V_2();
         }
 
         CheckHunger();
@@ -657,18 +684,21 @@ void Ecosystem::growthAnimals(void){
                         if( speed < 8 ){ terrain[i][j].getAnimal()[q]->setSpeedAnimal(speed+2); }
                         //TODO:Needed food must be added, perhaps as virtual function
                         break;
+
                     case 'R':           //RABBIT
 
                         if( size < 2 ){ terrain[i][j].getAnimal()[q]->setSizeAnimal(size+1); }
                         if( speed < 6 ){ terrain[i][j].getAnimal()[q]->setSpeedAnimal(speed+2); }
                         //TODO:Needed food must be added, perhaps as virtual function
                         break;
+
                     case 'G':           //GROUNDHOG
 
                         if( size < 3 ){ terrain[i][j].getAnimal()[q]->setSizeAnimal(size+1); }
                         if( speed < 5 ){ terrain[i][j].getAnimal()[q]->setSpeedAnimal(speed+1); }
                         //TODO:Needed food must be added, perhaps as virtual function
                         break;
+
                     case 'F':           //FOX
 
                         if( size < 4 ){ terrain[i][j].getAnimal()[q]->setSizeAnimal(size+1); }
@@ -676,8 +706,8 @@ void Ecosystem::growthAnimals(void){
                         //TODO:Needed food must be added, perhaps as virtual function
                         //TODO:Attack must be added, perhaps as virtual function
                         //TODO:Defence must be added, perhaps as virtual function
-
                         break;
+
                     case 'B':            //BEAR
 
                         if( size < 10 ){ terrain[i][j].getAnimal()[q]->setSizeAnimal(size+2); }
@@ -685,6 +715,7 @@ void Ecosystem::growthAnimals(void){
                         //TODO:Attack must be added, perhaps as virtual function
                         //TODO:Defence must be added, perhaps as virtual function
                         break;
+
                     case 'W':            //WOLF
 
                         if( size < 7 ){ terrain[i][j].getAnimal()[q]->setSizeAnimal(size+1); }
@@ -693,6 +724,7 @@ void Ecosystem::growthAnimals(void){
                         //TODO:Attack must be added, perhaps as virtual function
                         //TODO:Defence must be added, perhaps as virtual function
                         break;
+
                     default:
                         cout << "Salmon does not grow up." << endl;
                         break;
@@ -714,12 +746,11 @@ void Ecosystem::growthPlants(void){
                 char token = terrain[i][j].getEndemicPlant()->getToken();
                 int ILL = terrain[i][j].getEndemicPlant()->getIllProb();
                 int l_factor = terrain[i][j].getEndemicPlant()->getLifeFactor();
-                int prob = (rand()%100) + 1;
+                int prob = (rand()%100) + 1;        // [1, 100]
 
                 if( token == 'A' || token == 'G' ){
 
                     int life = terrain[i][j].getEndemicPlant()->getLife();
-
 
                     if(  prob > ILL ){  //Growing
 
@@ -742,7 +773,7 @@ void Ecosystem::growthPlants(void){
                         terrain[i][j].getEndemicPlant()->setFoliage(foliage + l_factor);
                         terrain[i][j].getEndemicPlant()->setSeeds(seed + (2*l_factor));
 
-                        if(foliage%l_factor == 0){
+                        if( foliage%l_factor == 0 ){
 
                             terrain[i][j].getEndemicPlant()->setSize(terrain[i][j].getEndemicPlant()->getSize()+1);
                         }
@@ -767,7 +798,7 @@ void Ecosystem::AnimalMovement(void){
 }
 
 
-void Ecosystem::AnimaleEating_V_2(void){
+ void Ecosystem::AnimaleEating_V_2(){
 
     for(int i=0; i<terrainSize; i++)
         for(int j=0; j<terrainSize; j++){
@@ -806,89 +837,6 @@ void Ecosystem::AnimaleEating_V_2(void){
             }
         }
 }
-
-//----------------------------------------------------------------------------------------------
-//XXX: problematic code
-void Ecosystem::AnimaleEating(void){
-
-    for(int i=0; i<terrainSize; i++)
-        for(int j=0; j<terrainSize; j++){
-
-            if( terrain[i][j].getAnimal() != NULL ){    //Animal must eat
-
-                int counter = terrain[i][j].getCountAnimals();
-
-                for(int q=0; q<counter; q++){  //Check every animal at the tile
-
-                    //eatenFood = eatenFood + eatCount
-                    int eatenFood = terrain[i][j].getAnimal()[q]->getEatenFoodAnimal();
-                    int eatCount = terrain[i][j].getAnimal()[q]->getEatCountAnimal();
-                    char token = terrain[i][j].getAnimal()[q]->getAnimalToken();
-
-                    if( token == 'D' ){  //Deer
-
-                        if( terrain[i][j].getEndemicPlant() != NULL ){  //There is a plant at this tile
-
-                            char plantToken = terrain[i][j].getEndemicPlant()->getToken();
-
-                            if( plantToken == 'G' ){   //Grass: Seedeles
-
-                                    terrain[i][j].getAnimal()[q]->setEatenFoodAnimal( eatenFood  + eatCount );
-                                    //UNDONE: Check if needeFood is complete ???
-
-                                    terrain[i][j].getEndemicPlant()->loseLife(eatCount);
-                            }
-                            else if( plantToken == 'O' || plantToken == 'M' ){  //Oak & Maple: Seeded
-
-                                //absVALUE = | sizeAnimal - sizePlant | <=4
-                                int abs_Value = abs( terrain[i][j].getAnimal()[q]->getSizeAnimal() - terrain[i][j].getEndemicPlant()->getSize() );
-                                if( abs_Value <= 4 ){   //sizePlant  = sizeAnimal + 4
-
-                                    terrain[i][j].getAnimal()[q]->setEatenFoodAnimal( eatenFood  + eatCount );
-                                    //UNDONE: Check if needeFood is complete ???
-                                    //UNDONE:SEEDS & FOLIAGE & LOSE LIFE
-                                }
-                            }
-                        }
-                    }
-                    else if( token == 'R' ){    //Rabbit
-
-                        if( terrain[i][j].getEndemicPlant() != NULL ){  //There is a plant at this tile
-
-                            char plantToken = terrain[i][j].getEndemicPlant()->getToken();
-
-                            if( plantToken == 'G' ){   //Grass: Seedeles
-
-                                    terrain[i][j].getAnimal()[q]->setEatenFoodAnimal( eatenFood  + eatCount );
-                                    //UNDONE: Check if needeFood is complete ???
-
-                                    terrain[i][j].getEndemicPlant()->loseLife(eatCount);
-                            }
-                            else if( plantToken == 'O' || plantToken == 'M' ){  //Oak & Maple: Seeded
-
-                                //absVALUE = | sizeAnimal - sizePlant | <=4
-                                int abs_Value = abs( terrain[i][j].getAnimal()[q]->getSizeAnimal() - terrain[i][j].getEndemicPlant()->getSize() );
-                                if( abs_Value == 0 ){   //sizePlant  = sizeAnimal
-
-                                    terrain[i][j].getAnimal()[q]->setEatenFoodAnimal( eatenFood  + eatCount );
-                                    //UNDONE: Check if needeFood is complete ???
-                                    //UNDONE:SEEDS & FOLIAGE & LOSE LIFE
-                                }
-                            }
-                        }
-                    }
-
-
-
-                }//for of the animals
-            }
-
-        }
-}
-//XXX: problematic code
-//----------------------------------------------------------------------------------------------
-
-
 
 void Ecosystem::CheckHunger(void){
 
@@ -1017,9 +965,10 @@ void Ecosystem::AnimalBreeding(int flag){
 
                             terrain[i][j].setAnimal(new Groundhog);
                         }
-                        else if((token == 'S') & (size == 1)){ //Adult Salmon gives birth
+                        else if((token == 'S') & (size == 1)){ //Adult Salmon gives birth ???
 
                             //Salmon does not give birth eventually
+                            //TODO: cout info message
                         }
                     }
                 }
@@ -1071,6 +1020,7 @@ char Ecosystem::FindFreeTile(int x, int y, char kindOfPlant, char searchGround){
 
     return 'N'; //Nowhere, there isn't any free tile for the  new planting
 }
+
 
 void Ecosystem::GiveBirth(char kindPlant, int x, int y){
 

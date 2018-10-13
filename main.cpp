@@ -105,6 +105,7 @@ int main(int argc, char *argv[])
 
      Ecosystem  myEco(TerrainSize,"Summer");
 
+     myEco.createEcoTerrain(TerrainSize);
      myEco.MapGenerator();
      myEco.printTerrainSnapShot();
 

@@ -1,6 +1,6 @@
 #include "tile.h"
 
-#include<exception>
+
 
 Tile::Tile(){
 

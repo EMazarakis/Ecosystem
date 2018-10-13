@@ -28,6 +28,9 @@ public:
 
     //I have to make a destructor due to double pointer: **
 
+    int createEcoTerrain(int trnSize);
+
+
     //setters
     void setTerrainSize(int size);
     void setDayOfYear(char *dOfy);
@@ -85,7 +88,6 @@ public:
     void DailyReset(void);
     void growthAnimals(void);
     void growthPlants(void);
-    void AnimaleEating(void);
     void AnimaleEating_V_2(void);
     void AnimalMovement(void);
     void CheckDeadEntities(void);
