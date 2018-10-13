@@ -12,7 +12,7 @@ public:
     //setters
     void setEnvironment(char envrmnt);
     void setEndemicPlant(Plants *endmcPlnt);
-    void setAnimal(Animals *anml);
+    int setAnimal(Animals *anml);
     void setCountAnimals(int count);
     void setAnimalsArray(Animals **anmlPtr);
 

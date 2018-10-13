@@ -1,5 +1,7 @@
 #include "tile.h"
 
+#include<exception>
+
 Tile::Tile(){
 
     endemicPlant= NULL;
@@ -26,31 +28,48 @@ Animals **Tile::getAnimal(void){ return animals; }
 int Tile::getCountAnimals(void){ return countAnimals; }
 
 
-void Tile::setAnimal(Animals *anml){
+int Tile::setAnimal(Animals *anml){
 
 
     if( animals == NULL ){  //First animal of the tile
 
-        countAnimals = 1;
-        animals = new Animals*[countAnimals];
-        animals[0] = anml;
+        try{
+
+            countAnimals = 1;
+            animals = new Animals*[countAnimals];   //possible throw
+            animals[0] = anml;
+        }
+        catch(exception& e){
+
+            cout << "Error allocating memory: " << e.what() << endl;
+            return EXIT_FAILURE;    //No need to continue
+        }
     }
     else{       //Tile is populated by some animals
 
-        countAnimals++;
+        try{
 
-        Animals **tmpPtr;
-        tmpPtr = new Animals*[countAnimals];
+            Animals **tmpPtr;
+            countAnimals++;
+            tmpPtr = new Animals*[countAnimals];    //possible throw
 
-        for(int i=0; i<(countAnimals-1);i++){
+            for(int i=0; i<(countAnimals-1);i++){
 
-            tmpPtr[i] = animals[i];
+                tmpPtr[i] = animals[i];
+            }
+
+            tmpPtr[countAnimals-1] = anml;
+
+            delete[] animals;
+            animals = tmpPtr;
         }
+        catch(exception& e){
 
-        tmpPtr[countAnimals-1] = anml;
-
-        delete[] animals;
-        animals = tmpPtr;
+            cout << "Error allocating memory: " << e.what() << endl;
+            return EXIT_FAILURE;    //No need to continue
+        }
     }
+
+    return EXIT_SUCCESS;
 }
 
