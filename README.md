@@ -1,5 +1,5 @@
 # Ecosystem
-Simulation of an Ecosystem with gui by QT Creator.
+Simulation of an Ecosystem with GUI by QT Creator.
 
 # Flora of the Ecosystem!
 
