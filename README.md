@@ -8,3 +8,7 @@ Simulation of an Ecosystem with GUI by QT Creator.
 
 # Fauna of the Ecosystem!
 ![animals](https://user-images.githubusercontent.com/32977750/47617021-6eafd200-dacc-11e8-90b3-05751e159b5d.JPG)
+
+
+** To do list **
+[ ] Movement of the animals
