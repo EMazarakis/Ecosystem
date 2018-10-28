@@ -12,7 +12,8 @@ ___
 # Fauna of the Ecosystem!
 ![animals](https://user-images.githubusercontent.com/32977750/47617021-6eafd200-dacc-11e8-90b3-05751e159b5d.JPG)
 
-*** <!--- this is a way to put a horizontal rule -->
+<!--- this is a way to put a horizontal rule -->
+*** 
 
 **To do list**
 
