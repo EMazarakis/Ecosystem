@@ -2,6 +2,14 @@
 Undergraduate project of the course: "Introduction to C++".  
 Simulation of an Ecosystem with GUI by QT Creator.
 
+Ecosystem is composed by a terrrain of tiles SIZExSIZE. Every tile can be one of the following kinds of "ground":
+
+1. Water
+2. Hill
+3. Mountain
+
+At every kind of "ground" lives one plant and many animals. 
+
 ---
 
 # Flora of the Ecosystem!
