@@ -12,10 +12,10 @@ At every kind of "ground" lives one plant and many animals.
 
 
 * Simulation starts certain season of the year  **dayOfYear**.   
-* Ecosystem runs for day 1 to runDays and every 90 days Season changes.   
-* When is the right time plants and animals growth through *growthPlants* & *growthAnimals* functions.   
-* Then every hour of the day animals move and eat.   
-* At the end of the day we check if there is a hungry animal and we check for dead animals in oreder to move them from the terrain.    
+* Ecosystem runs for day 1 to **runDays** and every **90** days Season changes.   
+* When is the right time plants and animals **growth** through *growthPlants* & *growthAnimals* functions.   
+* Also every hour of the day animals move and eat.   
+* At the end of the day we check if there is a hungry animal and we also check for dead animals in order to move them from the terrain. 
 * When is the right time plants and animals breed through *PlantBreeding* & *AnimalBreeding* functions.   
 
 ---
