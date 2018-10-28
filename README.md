@@ -1,4 +1,5 @@
 # Ecosystem
+Undergraduate project of the course: "Introduction to C++".  
 Simulation of an Ecosystem with GUI by QT Creator.
 
 ---
