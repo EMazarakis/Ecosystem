@@ -17,6 +17,8 @@ ___
 
 **To do list**
 
+- [ ] Fixing the river
 - [ ] Movement of the animals
+
 
 
